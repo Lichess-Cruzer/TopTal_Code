@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+    <title>
+        RRG
+    </title>
+
+
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+    <style>
+        :root {
+            --gradient: linear-gradient(270deg, #0BA9D8, #4E70F3);
+            --gradient1: linear-gradient(270deg, #4E70F3, #578D32);
+
+            --gradient2: linear-gradient(270deg, #4E70F3, #578D32);
+
+        }
+
+
+        #one {
+            background-size: 300%;
+            background: linear-gradient(150.52deg, #0BA9D8 2.3%, #0C7797 98.55%), linear-gradient(149.84deg, #4E70F3 1.34%, #542590 98.95%);
+            animation: bg-animation 12s infinite;
+        }
+
+        #two {
+            background-size: 300%;
+            background: linear-gradient(149.84deg, #4E70F3 1.34%, #542590 98.95%);
+            ;
+            animation: bg-animation 12s infinite;
+        }
+
+        #three {
+            background-size: 300%;
+            background: linear-gradient(150.52deg, #80BF55 2.3%, #619B3A 98.55%), linear-gradient(149.84deg, #4E70F3 1.34%, #542590 98.95%);
+            animation: bg-animation 12s infinite;
+        }
+
+        @keyframes bg-animation {
+            0% {
+                background-position: left
+            }
+
+            40% {
+                background-position: right
+            }
+
+            90% {
+                background-position: left
+            }
+        }
+    </style>
+</head>
+
+<body onload="changeText()">
+    <div class="min-h-screen w-full flex lg:flex relative">
+        <div class="w-2/3 min-h-screen hidden xl:block" style="background-color: #e5e5e5;"></div>
+        <div class="w-1/3 min-h-screen hidden xl:block" style="background-color: #F7F8FB;"></div>
+        <div class="hidden xl:block">
+            <div class="flex flex-wrap absolute  border-gray-300 border-8 rounded-3xl top-32 bottom-32 left-32 right-32"
+                style="border-color: #DFE5FF">
+                <div id='one'
+                    class="md:w-1/2 hidden xl:block rounded-3xl rounded-r-none w-full pb-6 md:pb-0 h-full shadow-2xl">
+                    <div class="h-full">
+                        <section class="h-full">
+                            <div class="mx-auto container h-full flex">
+
+                                <div class="h-full rounded-3xl rounded-r-none py-20 sm:py-40 flex flex-col justify-between relative"
+                                    id="div1">
+
+                                    <img class="absolute top-0 left-0 -ml-10 -mt-6" src="./assets/dots.svg" />
+                                    <div class="flex flex-col justify-center items-center h-full px-4 md:pr-4">
+
+                                        <div class="pr-10 px-2 flex flex-col justify-center h-full">
+
+                                            <b>
+                                                <h2 class="text-4xl text-white pl-14"
+                                                    style="font-size: 72px; color: #FFFFFF;">Did you</h2>
+                                                <h2 class="text-4xl pt-8 text-white pl-14"
+                                                    style="font-size: 72px;  color: #FFFFFF;">know?</h2>
+                                            </b>
+
+                                            <p class="font-serif text-white pt-8 pl-14"
+                                                style="font-size: 24px;color: E7E7E7; font-family: inter;">
+                                                Almost half of all temperate grasslands and 16 percent of tropical
+                                                grasslands have been converted to agricultural or industrial uses and
+                                                only
+                                                one percent of the original tallgrass prairie exists today.
+                                            </p>
+
+                                        </div>
+                                        <br>
+
+                                    </div>
+
+                                    <div class="absolute bottom-0 w-full flex justify-center">
+                                        <img style="width: 600px;" src="./assets/logintrees.svg">
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+                <div id='two'
+                    class="md:w-1/2 hidden xl:block rounded-3xl rounded-r-none w-full pb-6 md:pb-0 h-full shadow-2xl"
+                    style="display: none;">
+                    <div class="h-full">
+                        <section class="h-full">
+                            <div class="mx-auto container h-full flex">
+
+                                <div class="h-full rounded-3xl rounded-r-none py-20 sm:py-40 flex flex-col justify-between relative"
+                                    id="div1">
+
+                                    <img class="absolute top-0 left-0 -ml-10 -mt-6" src="./assets/dots.svg" />
+                                    <div class="flex flex-col justify-center items-center h-full px-4 md:pr-4">
+
+                                        <div class="pr-10 px-2 flex flex-col justify-center h-full">
+
+                                            <b>
+                                                <h2 class="text-4xl text-white pl-14"
+                                                    style="font-size: 72px; color: #FFFFFF;">Did you</h2>
+                                                <h2 class="text-4xl pt-8 text-white pl-14"
+                                                    style="font-size: 72px;  color: #FFFFFF;">know?</h2>
+                                            </b>
+
+                                            <p class="font-serif text-white pt-8 pl-14"
+                                                style="font-size: 24px;color: E7E7E7; font-family: inter;">
+                                                Our planet is currently losing forests at a staggering rate: We’re
+                                                losing
+                                                more than 18 million acres of forests every year — that’s about 27
+                                                soccer
+                                                fields of forest lost every minute.
+                                            </p>
+
+                                        </div>
+                                        <br>
+
+                                    </div>
+
+                                    <div class="absolute bottom-0 w-full flex justify-center">
+                                        <img style="width: 600px;" src="./assets/logintrees.svg">
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+                <div id='three'
+                    class="md:w-1/2 hidden xl:block rounded-3xl rounded-r-none w-full pb-6 md:pb-0 h-full shadow-2xl"
+                    style="display: none;">
+                    <div class="h-full">
+                        <section class="h-full">
+                            <div class="mx-auto container h-full flex">
+
+                                <div class="h-full rounded-3xl rounded-r-none py-20 sm:py-40 flex flex-col justify-between relative"
+                                    id="div1">
+
+                                    <img class="absolute top-0 left-0 -ml-10 -mt-6" src="./assets/dots.svg" />
+                                    <div class="flex flex-col justify-center items-center h-full px-4 md:pr-4">
+
+                                        <div class="pr-10 px-2 flex flex-col justify-center h-full">
+
+                                            <b>
+                                                <h2 class="text-4xl text-white pl-14"
+                                                    style="font-size: 72px; color: #FFFFFF;">Did you</h2>
+                                                <h2 class="text-4xl pt-8 text-white pl-14"
+                                                    style="font-size: 72px;  color: #FFFFFF;">know?</h2>
+                                            </b>
+
+                                            <p class="font-serif text-white pt-8 pl-14"
+                                                style="font-size: 24px;color: E7E7E7; font-family: inter;">
+                                                By planting 20 million trees, the earth and its people will be provided
+                                                with
+                                                260 million more tons of oxygen. Those same 20 million trees will remove
+                                                10
+                                                million tons of CO2.
+                                            </p>
+
+                                        </div>
+                                        <br>
+
+                                    </div>
+
+                                    <div class="absolute bottom-0 w-full flex justify-center">
+                                        <img style="width: 600px;" src="./assets/logintrees.svg">
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+                <div
+                    class="md:w-1/2 bg-white h-full w-full h-full pb-6 md:pb-0 md:pr-6 rounded-3xl rounded-l-none shadow-2xl">
+                    <div class="h-full">
+                        <form id="login" class="mx-auto flex h-full items-center">
+                            <div
+                                class="w-screen w-full h-full sm:w-4/6 md:w-3/6 lg:w-full text-gray-800 dark:text-gray-100 flex flex-col items-center justify-center px-2">
+                                <div class="px-2 sm:px-8 flex justify-center">
+                                    <h3 class=" text-4xl sm:text-3xl md:text-2xl font-semibold"
+                                        style="font-size: 40px;">
+                                        Sign in
+                                    </h3>
+                                </div>
+                                <div class="">
+                                    <div class="flex flex-col mt-8">
+                                        <label for="email"
+                                            class="rounded-lg text-lg font-semibold leading-tight">Email</label>
+                                        <input id="email" required aria-required="true" name="email"
+                                            class="h-10 px-2 w-full rounded-lg mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 border-gray-300 border shadow pr-10"
+                                            type="email" style="width: 380px;" />
+                                    </div>
+                                    <div class="flex flex-col mt-5 relative">
+                                        <label for="password"
+                                            class="text-lg font-semibold fleading-tight">Password</label>
+                                        <input id="password" required aria-required="true" name="password"
+                                            type="password"
+                                            class="h-10 px-2 w-full rounded-lg mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 border-gray-300 border shadow"
+                                            style="width: 380px;" />
+                                        <img class="absolute right-2 bottom-3 mt-1" src="./assets/eye.svg" />
+                                    </div>
+                                </div>
+
+                                <div class="pt-4 px-2 mb-8">
+
+
+                                    <button type="submit"
+                                        class="pt-4 items-center focus:outline-none w-full sm:w-auto transition duration-150 ease-in-out hover:bg-indigo-600 rounded-xl text-white px-8 py-3 text-sm mt-6"
+                                        style="width: 380px;background: linear-gradient(149.84deg, #4DC0E2 1.34%, #00A5D6 98.95%);">Sign
+                                        in
+                                    </button>
+                                </div>
+                                <div class="absolute bottom-10">
+                                    <div class="flex justify-center items-center">
+                                        <img src="./assets/navFooter.svg" />
+                                    </div>
+                                    <div class="flex justify-center">
+                                        <p class="text-center text-xs pt-2" style="color:#959595">Powered by</p>
+                                    </div>
+                                    <div class="flex justify-center">
+                                        <p class="text-center text-xs" style="color:#595959">Reduce. Reuse. Grow. Inc.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex w-full justify-center items-center xl:hidden" style="background-color: #F7F8FB;">
+            <div class="w-11/12 rounded-lg shadow bg-white py-12">
+                <h3 class=" text-4xl text-center sm:text-3xl md:text-2xl font-semibold" style="font-size: 40px;">
+                    Sign in
+                </h3>
+                <div class="px-4">
+                    <div class="flex flex-col mt-8">
+                        <label for="email" class="rounded-lg text-lg font-semibold leading-tight">Email</label>
+                        <input id="email" required aria-required="true" name="email"
+                            class="h-10 px-2 w-full  w-10/12 rounded-lg mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 border-gray-300 border shadow pr-10"
+                            type="email" />
+                    </div>
+                    <div class="flex flex-col mt-5 relative">
+                        <label for="password" class="text-lg font-semibold fleading-tight">Password</label>
+                        <input id="password" required aria-required="true" name="password" type="password"
+                            class="h-10 w-10/12  px-2 w-full rounded-lg mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 dark:focus:border-indigo-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 border-gray-300 border shadow" />
+                        <img class="absolute right-2 bottom-3 mt-1" src="./assets/eye.svg" />
+                    </div>
+                </div>
+
+                <div class="pt-4 px-2 mb-8 flex justify-center">
+
+
+                    <button type="submit"
+                        class="pt-4 items-center focus:outline-none w-full sm:w-auto transition duration-150 ease-in-out hover:bg-indigo-600 rounded-xl text-white px-8 py-3 text-sm mt-6"
+                        style="width: 300px;background: linear-gradient(149.84deg, #4DC0E2 1.34%, #00A5D6 98.95%);">Sign
+                        in
+                    </button>
+                </div>
+                <div class="">
+                    <div class="flex justify-center items-center">
+                        <img src="./assets/navFooter.svg" />
+                    </div>
+                    <div class="flex justify-center">
+                        <p class="text-center text-xs pt-2" style="color:#959595">Powered by</p>
+                    </div>
+                    <div class="flex justify-center">
+                        <p class="text-center text-xs" style="color:#595959">Reduce. Reuse. Grow. Inc.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+    <script>
+        function changeText() {
+            setTimeout(function () {
+                document.getElementById("one").style.display = "none";
+                document.getElementById("two").style.display = "block";
+                changeText2()
+            }, 3000);
+        }
+        function changeText2() {
+            setTimeout(function () {
+                document.getElementById("two").style.display = "none";
+                document.getElementById("three").style.display = "block";
+                reverseText();
+            }, 3000);
+        }
+        function reverseText() {
+            setTimeout(function () {
+                document.getElementById("three").style.display = "none";
+                document.getElementById("one").style.display = "block";
+                changeText();
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>

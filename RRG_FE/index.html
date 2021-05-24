@@ -1,0 +1,2229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>
+    RRG
+  </title>
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="" />
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+    google.charts.setOnLoadCallback(drawChart1);
+    var values = [
+      ['Jan', 20, 28, 38, 45],
+      ['Feb', 31, 38, 55, 66],
+      ['Mar', 50, 55, 77, 80],
+      ['Apr', 77, 77, 66, 50],
+      ['May', 68, 66, 22, 15],
+      ['Jun', 50, 55, 77, 80],
+      ['Jul', 20, 28, 38, 45],
+      ['Aug', 77, 77, 66, 50],
+      ['Sep', 68, 66, 22, 15],
+      ['Oct', 50, 55, 77, 80],
+      ['Nov', 20, 28, 38, 45],
+      ['Dec', 68, 66, 22, 15]
+    ]
+
+    var values1 = [
+      ['Jan', 77, 77, 66, 50],
+      ['Feb', 20, 28, 38, 45],
+      ['Mar', 50, 55, 77, 80],
+      ['Apr', 20, 28, 38, 45],
+      ['May', 68, 66, 22, 15],
+      ['Jun', 50, 55, 77, 80],
+      ['Jul', 31, 38, 55, 66],
+      ['Aug', 77, 77, 66, 50],
+      ['Sep', 20, 28, 38, 45],
+      ['Oct', 50, 55, 77, 80],
+      ['Nov', 20, 28, 38, 45],
+      ['Dec', 20, 28, 38, 45]
+    ]
+
+    function changeData2(value) {
+      var x = document.getElementById('g1');
+      var y = document.getElementById('g2');
+      if (x.style.display === "none") {
+        x.style.display = "block";
+        y.style.display = "none";
+      } else {
+        x.style.display = "none";
+        y.style.display = "block";
+      }
+    }
+
+
+    function drawChart() {
+      var s = screen.width;
+      console.log(s)
+      var value;
+      if (s >= 1920) {
+        value = 1150;
+      }
+      if (s >= 1440 && s < 1920) {
+        value = 880;
+      }
+      if (s >= 1336 && s < 1440) {
+        value = 820;
+      }
+      if (s >= 1080 && s < 1336) {
+        value = 980;
+      }
+      else if (s >= 768 && s < 1080) {
+        value = 500;
+      }
+      else if (s >= 414 && s < 768) {
+        value = 300;
+      }
+
+      var data = google.visualization.arrayToDataTable(values, true);
+
+      var options = {
+        legend: 'none',
+        height: 300,
+        width: value,
+        candlestick: {
+          risingColor: { stroke: '#4DC0E2', fill: '#4DC0E2' },
+          fallingColor: { stroke: '80BF54', fill: '#80BF54' }
+        },
+        colors: ['lightgray', 'magenta']
+      };
+
+      var chart = new google.visualization.CandlestickChart(document.getElementById('chart_div'));
+
+      chart.draw(data, options);
+    }
+
+    function drawChart1() {
+      var s = screen.width;
+      console.log(s)
+      var value;
+      if (s >= 1920) {
+        value = 1150;
+      }
+      if (s >= 1440 && s < 1920) {
+        value = 880;
+      }
+      if (s >= 1336 && s < 1440) {
+        value = 820;
+      }
+      if (s >= 1080 && s < 1336) {
+        value = 980;
+      }
+      else if (s >= 768 && s < 1080) {
+        value = 500;
+      }
+      else if (s >= 414 && s < 768) {
+        value = 300;
+      }
+
+      var data = google.visualization.arrayToDataTable(values1, true);
+
+      var options = {
+        legend: 'none',
+        height: 300,
+        width: value,
+        candlestick: {
+          risingColor: { stroke: '#4DC0E2', fill: '#4DC0E2' },
+          fallingColor: { stroke: '80BF54', fill: '#80BF54' }
+        },
+        colors: ['lightgray', 'magenta']
+      };
+
+      var chart = new google.visualization.CandlestickChart(document.getElementById('chart_div1'));
+
+      chart.draw(data, options);
+    }
+  </script>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* The Modal (background) */
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 30;
+      /* Sit on top */
+      padding-top: 100px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      margin-top: 5%;
+    }
+
+    /* The Close Button */
+    .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* License */
+    /* The Modal (background) */
+    .modal2 {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 30;
+      /* Sit on top */
+      padding-top: 20px;
+      padding-bottom: 20px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      /* background-color: rgb(245, 245, 245,0.1); */
+      /* Fallback color */
+      /* background-color: rgba(#F7F7F7, 253, 245, 0.4); */
+      background-color: rgba(245, 253, 245, 0.95);
+      /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal2-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+    }
+
+    /* The Close Button */
+    .close2 {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close2:hover,
+    .close2:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* Restoration */
+    /* The Modal (background) */
+    .modal3 {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 30;
+      /* Sit on top */
+      padding-top: 20px;
+      padding-bottom: 20px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal3-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      margin-top: 5%;
+    }
+
+    /* The Close Button */
+    .close3 {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close3:hover,
+    .close3:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body class="" style="font-family: 'Inter', sans-serif; background-color: #EFF1F8;">
+  <!-- Modal For License -->
+  <div id="myModal2" class="modal2">
+    <!-- Modal content -->
+    <div class="modal2-content relative rounded-lg w-1/2">
+      <div class="bg-white">
+        <div class="flex items-start justify-between">
+          <img class="w-1/2 -mt-5 -ml-5" src='./assets/Vector.png' />
+          <span class="close2 -mt-5 xl:mt-0">&times;</span>
+        </div>
+        <div class="flex justify-center">
+          <img class="xl:absolute top-20" src='./assets/logo.svg' />
+        </div>
+        <div class="flex justify-center">
+          <img class="w-full mt-5 xl:mt-0 xl:w-1/3" src='./assets/certy.png' />
+        </div>
+        <div class="flex justify-center">
+          <p class="text-xl pt-12" style="color: #767676;">ONE TREE HAS BEEN PLANTED FOR THIS TRANSACTION</p>
+        </div>
+        <div class="px-1 xl:px-10 pt-20">
+          <div class="flex flex-wrap items-center justify-center">
+            <div class="w-full xl:w-1/3 bg-green-50 relative h-48 xl:mr-5">
+              <p class="text-2xl font-bold pt-8 pl-8">2,427,433</p>
+              <p class="font-xl pt-2 pl-8">Plants Planted To Date</p>
+              <img class="absolute bottom-0" src="./assets/trees.svg" />
+            </div>
+            <div class="w-full mt-1 xl:mt-0 xl:w-1/3 h-48 relative bg-green-50 xl:ml-5">
+              <p class="text-2xl font-bold pt-8 pl-8">1.23</p>
+              <p class="font-xl pt-2 pl-8 2xl:pr-3">Number of Acres Restored</p>
+              <div class="flex absolute bottom-0 w-full items-center px-8 mt-6">
+                <div class="h-16 w-3/12 mr-1" style="background-color: #80BF54;">
+                </div>
+                <div class="h-16 w-3/12 mx-1" style="background-color: #80BF54;">
+                </div>
+                <div class="w-3/12 mr-2">
+                  <div class="h-8 w-4 md:w-full mx-1" style="background-color: #80BF54;">
+                  </div>
+                  <div class="h-8 w-4 md:w-full mx-1" style="background-color: #9B7653;">
+                  </div>
+                </div>
+                <div class="h-16 w-3/12 ml-1" style="background-color: #9B7653;">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-wrap w-full items-start pt-28 pb-16">
+          <div class="w-1/2 pl-8">
+            <p class="text-3xl font-bold">2019</p>
+            <p class="">Site Contributions</p>
+            <div class="flex items-center text-xs pt-5">
+              <p>01</p>
+              <div class="h-3 mx-1 bg-gray-800" style="width: 1px;"></div>
+              <p class="pl-1">The Highlands</p>
+            </div>
+            <div class="flex items-center text-xs pt-2">
+              <p>02</p>
+              <div class="h-3 mx-1 bg-gray-800" style="width: 1px;"></div>
+              <p class="pl-1">Saul Lake Bog Nature Preserve</p>
+            </div>
+          </div>
+          <div class="w-full xl:w-1/2 pl-8 pt-2">
+            <div class="flex items-center text-xs">
+              <p>03</p>
+              <div class="h-3 mx-1 bg-gray-800" style="width: 1px;"></div>
+              <p class="pl-1">Yellowstone Site 1</p>
+            </div>
+            <div class="flex items-center text-xs pt-2">
+              <p>04</p>
+              <div class="h-3 mx-1 bg-gray-800" style="width: 1px;"></div>
+              <p class="pl-1">Yellowstone Site 2</p>
+            </div>
+            <div class="flex items-center text-xs pt-2">
+              <p>05</p>
+              <div class="h-3 mx-1 bg-gray-800" style="width: 1px;"></div>
+              <p class="pl-1">Protect The Ocras Campaign</p>
+            </div>
+            <div class="flex items-center text-xs pt-2">
+              <p>06</p>
+              <div class="h-3 mx-1 bg-gray-800" style="width: 1px;"></div>
+              <p class="pl-1">Kincade Fires</p>
+            </div>
+            <div class="flex items-center text-xs pt-2">
+              <p>07</p>
+              <div class="h-3 mx-1 bg-gray-800" style="width: 1px;"></div>
+              <p class="pl-1">Yosemite Fires</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-center items-center mt-1 text-sm shadow-lg"
+        style="background-color: #EFF1F8;color: #767676;">
+        <button class="border bg-white my-2 mx-2 focus:outline-none rounded-sm px-3 py-2">DOWNLOAD</button>
+        <button class="border bg-white my-2 mx-3 focus:outline-none rounded-sm px-3 py-2">PRINT</button>
+        <button class="border bg-white my-2 mx-2 focus:outline-none rounded-sm px-3 py-2">EMAIL TO USER</button>
+        <button class="border bg-white my-2 mx-2 focus:outline-none rounded-sm px-3 py-2">CLOSE</button>
+      </div>
+    </div>
+  </div>
+  <div class="">
+    <div class="flex flex-wrap">
+      <div onclick="menuShow()" class="md:hidden">
+        <svg class="" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-align-justified" width="44"
+          height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <line x1="4" y1="6" x2="20" y2="6" />
+          <line x1="4" y1="12" x2="20" y2="12" />
+          <line x1="4" y1="18" x2="16" y2="18" />
+        </svg>
+      </div>
+      <div id="menu-sm" class="md:w-1/5 xl:mt-0 w-full pb-6 md:pb-0 md:pr-6 hidden md:block"
+        style="background-color: #EFF1F8;">
+        <div class="md:h-screen md:fixed">
+          <div class="pt-7 pl-8">
+            <img class="" src='./assets/logo.svg' />
+          </div>
+          <!-- sidenav values wrapper -->
+          <div class="pt-10">
+            <div class="flex items-center rounded-r-lg"
+              style="background: linear-gradient(149.84deg, #4DC0E2 1.34%, #00A5D6 98.95%);">
+              <img class="ml-6" src='./assets/dashboard.svg' />
+              <p class="text-white text-sm ml-4 md:ml-2 xl:ml-4 py-2.5">Dashboard</p>
+            </div>
+            <div class="flex pt-6 items-center rounded-r-lg" style="color:#1A202C;">
+              <img class="ml-6" src='./assets/logout.svg' />
+              <p class="ml-4 text-sm md:ml-2 xl:ml-4 py-2.5">Restoration <br class="xl:hidden" /> Partner Portal</p>
+            </div>
+            <div class="flex pt-6 items-center rounded-r-lg" style="color:#1A202C;">
+              <img class="ml-6" src='./assets/flower.svg' />
+              <p class="ml-4 text-sm md:ml-2 xl:ml-4 py-2.5">Restoration <br class="xl:hidden" /> Sites </p>
+            </div>
+            <div class="flex pt-6 items-center rounded-r-lg" style="color:#1A202C;">
+              <img class="ml-6" src='./assets/stack.svg' />
+              <p class="ml-4 text-sm md:ml-2 xl:ml-4 py-2.5">Marketing <br class="xl:hidden" /> Portal </p>
+            </div>
+            <div class="flex pt-6 items-center rounded-r-lg" style="color:#1A202C;">
+              <img class="ml-6" src='./assets/share.svg' />
+              <p class="ml-4 text-sm py-2.5">Referrals </p>
+            </div>
+            <div class="flex pt-6 items-center rounded-r-lg" style="color:#1A202C;">
+              <img class="ml-6" src='./assets/money.svg' />
+              <p class="ml-4 text-sm py-2.5">Billing </p>
+            </div>
+            <div class="flex pt-6 items-center rounded-r-lg" style="color:#1A202C;">
+              <img class="ml-6" src='./assets/page.svg' />
+              <p class="ml-4 text-sm py-2.5">Documents </p>
+            </div>
+            <div class="absolute left-0 right-0 bottom-0">
+              <div class="flex justify-center">
+                <img src="./assets/navFooter.svg" />
+              </div>
+              <div class="flex justify-center">
+                <p class="text-center text-xs pt-2" style="color:#959595">Powered by</p>
+              </div>
+              <div class="flex justify-center pb-12">
+                <p class="text-center text-xs" style="color:#595959">Reduce. Reuse. Grow. Inc.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- right column -->
+      <div class="md:w-4/5 px-3 md:pl-3 md:px-0 -mt-6 xl:mt-0 w-full relative">
+        <!-- Page header -->
+        <div class="flex flex-wrap justify-between items-center pt-9">
+          <div>
+            <p class="text-2xl" style="color:#1a202c">Hi Elena!</p>
+            <p class="text-sm" style="color:#1a202c">Here’s a bird eye view of what’s going on in the <span
+                style="color:#80BF54">Restoration Dashboard</span></p>
+          </div>
+          <div class="flex items-center pr-9">
+            <img class="h-7" src='./assets/notifications.svg' />
+            <img class="h-7 mx-6" src='./assets/settings.svg' />
+            <img class="h-12" src='./assets/Avatar.png' />
+          </div>
+        </div>
+        <!-- Total Impact div -->
+        <div
+          class="container w-full mt-9 rounded-tl-xl mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 pt-6 gap-8"
+          style="background-image: url(./assets/impact_bg.png);">
+          <div>
+            <p class="text-3xl mt-1 pl-12 font-bold" style="color:#1A202C">Total Impact</p>
+          </div>
+          <div class="">
+            <img class="h-16" src="./assets/trees.svg" />
+          </div>
+          <div>
+            <div class="flex md:flex-wrap justify-start pl-12 lg-pl-0">
+              <div>
+                <p class="font-bold text-3xl">102,344</p>
+                <p class="font-medium text-sm" style="color:#4A5568">Plants Planted to Date</p>
+              </div>
+              <div class="xl:pl-4">
+                <p class="font-bold pl-16 md:pl-0 text-3xl">4.92k</p>
+                <p class="pl-16 md:pl-0 text-sm" style="color:#4A5568">Lbs of Carbon <br
+                    class="hidden xl:block 2xl:hidden" /> Sequestered</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container mx-auto w-full bg-white">
+          <div class="pt-12 pl-12 flex flex items-center">
+            <div class="w-full">
+              <div class="flex items-center">
+                <div class="flex flex-wrap py-1 w-full xl:ml-1 text-sm items-center bg-white">
+                  <div id="choose1" onclick="showChart1()"
+                    class="cursor-pointer py-2 px-3 rounded-md rounded-r-none px-1 text-gray-500"
+                    style="background-color: #F9FAFA;">
+                    <svg width="24" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M8 12H4C3.44772 12 3 12.4477 3 13V19C3 19.5523 3.44772 20 4 20H8C8.55228 20 9 19.5523 9 19V13C9 12.4477 8.55228 12 8 12Z"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                      <path
+                        d="M14 8H10C9.44772 8 9 8.44772 9 9V19C9 19.5523 9.44772 20 10 20H14C14.5523 20 15 19.5523 15 19V9C15 8.44772 14.5523 8 14 8Z"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                      <path
+                        d="M20 4H16C15.4477 4 15 4.44772 15 5V19C15 19.5523 15.4477 20 16 20H20C20.5523 20 21 19.5523 21 19V5C21 4.44772 20.5523 4 20 4Z"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                      <path d="M4 20H18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                  <div id="choose2" onclick="showChart2()" class="cursor-pointer  py-2 px-3   text-white"
+                    style="background-color: #80BF54;">
+                    <svg width="24" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4 19H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                      <path d="M4 15L8 9L12 11L16 6L20 10" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </div>
+                  <div class="pl-1 rounded-md" style="background-color: #F9FAFA;">
+                    <div id="choose3" onclick="showChart3()"
+                      class="cursor-pointer py-2 px-3  text-gray-500 rounded-md rounded-l-none text-gray-500 ">
+                      <svg style="padding: 2px;" class="mr-1" width="24" height="20" viewBox="0 0 24 25" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M4.42283 13.5652V13.4902H4.34783H3.50991C2.72117 13.4902 2.075 12.8241 2.075 12V3.13043C2.075 2.30633 2.72117 1.64022 3.50991 1.64022H4.34783H4.42283V1.56522V0.521739C4.42283 0.275161 4.62299 0.075 4.86957 0.075C5.11614 0.075 5.3163 0.27516 5.3163 0.521739V1.56522V1.64022H5.3913H6.2287C7.01798 1.64022 7.66413 2.30634 7.66413 3.13043V12C7.66413 12.8241 7.01748 13.4902 6.2287 13.4902H5.3913H5.3163V13.5652V14.6087C5.3163 14.8553 5.11614 15.0554 4.86957 15.0554C4.62299 15.0554 4.42283 14.8553 4.42283 14.6087V13.5652ZM3.50991 2.5337C3.20357 2.5337 2.96848 2.80968 2.96848 3.13043V12C2.96848 12.3208 3.20357 12.5967 3.50991 12.5967H6.2287C6.53551 12.5967 6.77065 12.3208 6.77065 12V3.13043C6.77065 2.80957 6.53493 2.5337 6.2287 2.5337H3.50991Z"
+                          fill="currentColor" stroke="currentColor" stroke-width="0.15" />
+                        <path
+                          d="M11.0751 22.4348H11.913V23.4783C11.913 23.7663 12.1462 24.0001 12.4348 24.0001C12.7233 24.0001 12.9565 23.7663 12.9565 23.4783V22.4348H13.7939C14.6266 22.4348 15.3043 21.7326 15.3043 20.8696V12.0001C15.3043 11.1371 14.6266 10.4348 13.7939 10.4348H12.9565V9.39137C12.9565 9.10337 12.7233 8.86963 12.4348 8.86963C12.1462 8.86963 11.913 9.10337 11.913 9.39137V10.4348H11.0751C10.2424 10.4348 9.56519 11.1371 9.56519 12.0001V20.8696C9.56519 21.7326 10.2424 22.4348 11.0751 22.4348ZM10.6087 12.0001C10.6087 11.7126 10.8179 11.4783 11.0751 11.4783H13.7939C14.0516 11.4783 14.2608 11.7126 14.2608 12.0001V20.8696C14.2608 21.1571 14.0516 21.3914 13.7939 21.3914H11.0751C10.8179 21.3914 10.6087 21.1571 10.6087 20.8696V12.0001Z"
+                          fill="currentColor" stroke="currentColor" stroke-width="0.15" />
+                        <path
+                          d="M19.5532 14.6087V14.5337H19.4782H18.6403C17.852 14.5337 17.2054 13.8675 17.2054 13.0435V4.17389C17.2054 3.34978 17.8515 2.68367 18.6403 2.68367H19.4782H19.5532V2.60867V1.5652C19.5532 1.31857 19.7529 1.11846 19.9999 1.11846C20.247 1.11846 20.4467 1.31857 20.4467 1.5652V2.60867V2.68367H20.5217H21.3591C22.1478 2.68367 22.7945 3.34982 22.7945 4.17389V13.0435C22.7945 13.8675 22.1478 14.5337 21.3591 14.5337H20.5217H20.4467V14.6087V15.6522C20.4467 15.8988 20.247 16.0989 19.9999 16.0989C19.7529 16.0989 19.5532 15.8988 19.5532 15.6522V14.6087ZM18.6403 3.57715C18.3339 3.57715 18.0988 3.85314 18.0988 4.17389V13.0435C18.0988 13.3642 18.3339 13.6402 18.6403 13.6402H21.3591C21.6659 13.6402 21.901 13.3643 21.901 13.0435V4.17389C21.901 3.85302 21.6653 3.57715 21.3591 3.57715H18.6403Z"
+                          fill="currentColor" stroke="currentColor" stroke-width="0.15" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="flex py-2 rounded-md xl:py-0 xl:ml-5 flex-wrap items-center"
+                    style="background-color: #F9FAFA;">
+                    <p class=" py-2 px-3 " style="color: #8F92A1;">Show:</p>
+                    <p class="pl-2" style="color: #8F92A1;">Hour</p>
+                    <div class="h-3 mx-2" style="background-color: #8F92A1; width: 1px;"></div>
+                    <p style="color: #8F92A1;">Day</p>
+                    <div class="h-3 mx-2" style="background-color: #8F92A1; width: 1px;"></div>
+                    <p style="color: #8F92A1;">Week</p>
+                    <div class="h-3 mx-2" style="background-color: #8F92A1; width: 1px;"></div>
+                    <p style="color: #8F92A1;">Quarter</p>
+                    <div class="h-3 mx-2" style="background-color: #8F92A1; width: 1px;"></div>
+                    <p style="color: #8F92A1;">Month</p>
+                    <div class="h-3 mx-2" style="background-color: #8F92A1; width: 1px;"></div>
+                    <p class="pr-1" style="color:#80BF54;">Year</p>
+                  </div>
+                  <div class="flex xl:justify-end w-3/12 xl:ml-2 relative">
+                    <div class="flex items-center cursor-pointer justify-end" style="background-color: #F9FAFA;">
+                      <div class="h-3 w-3 m-2 rounded-full" style="background-color: #00A5D6;"></div>
+                      <p id="reven" class="text-sm  py-2 px-3 " style="color: #1A202C;">Revenue</p>
+                      <div class="h-3 ml-4 w-3 m-2 rounded-full" style="background-color:#80BF54;"></div>
+                      <p id='prof' class="text-sm pr-2" style="color: #1A202C;">Profit</p>
+                      <div class="h-3" style="background-color: #8F92A1;width: 1px;"></div>
+                      <img onclick="showDropdown()" class="mx-1 cursor-pointer" src="./assets/arr.svg" />
+                      <div id='dropdownProfit' class="absolute mt-48 rounded-lg shadow-lg bg-white"
+                        style="display: none;z-index: 100;">
+                        <p onclick="showDropdownValues('Print Orders','Pcs per Order')"
+                          class="pt-2 pl-2 pb-0 cursor-pointer">Print Orders + Pcs per Order</p>
+                        <p onclick="showDropdownValues('Print Orders','Plants Planted')"
+                          class="p-1 pl-2 pb-0 cursor-pointer">Print Orders + Plants Planted</p>
+                        <p onclick="showDropdownValues('Print Orders','Sustainability Impact')"
+                          class="p-1 pl-2 pb-0 pr-4 cursor-pointer">Print Orders + Sustainability Impact</p>
+                        <p onclick="showDropdownValues('Revenue','Print Orders')" class="p-1 pl-2 pb-0 cursor-pointer">
+                          Revenue + Print Orders</p>
+                        <p onclick="showDropdownValues('Revenue','Profit')" class="p-1 pl-2 pb-0 pr-4 cursor-pointer">
+                          Revenue + Profit</p>
+                        <p onclick="showDropdownValues('Plants','Sustainability Impact')"
+                          class="p-1 pl-2 pb-2 cursor-pointer">Plants + Sustainability Impact</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts Section started -->
+          <div class="flex flex-wrap">
+            <div id='Line' class="xl:w-2/3 w-full">
+              <div class="flex items-center justify-center py-8 px-4">
+                <div class="w-full px-10">
+                  <div class="">
+                    <div class="flex flex-col justify-between h-full">
+                      <div>
+                        <div class="lg:flex w-full justify-between">
+                          <h3 class="text-gray-600 dark:text-gray-400 leading-5 text-base md:text-xl font-bold">Selling
+                            Overview</h3>
+                          <div class="flex items-center justify-between lg:justify-start mt-2 md:mt-4 lg:mt-0">
+                            <!-- <div class="flex items-center">
+                              <button
+                                class="py-2 px-4 bg-gray-100 dark:bg-gray-700 focus:outline-none ease-in duration-150 text-xs text-gray-600 dark:text-gray-400 hover:bg-gray-200">Dollars</button>
+                              <button
+                                class="py-2 px-4 bg-indigo-500 focus:outline-none text-white ease-in duration-150 text-xs hover:bg-indigo-600">Tickets</button>
+                            </div> -->
+                            <div class="xl:mr-2">
+                              <div
+                                class="bg-gray-100 dark:bg-gray-700 ease-in duration-150 hover:bg-gray-200 pb-2 pt-1 px-3 rounded-sm">
+                                <select onchange="changeData(event.target.value)"
+                                  class="text-xs text-gray-600 dark:text-gray-400 bg-transparent focus:outline-none">
+                                  <option class="leading-1">Year</option>
+                                  <option value="0" class="leading-1">2020</option>
+                                  <option value="1" class="leading-1">2019</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="flex items-end mt-6">
+                          <!-- <div class="flex items-center md:ml-4 ml-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
+                              fill="none">
+                              <path d="M6 2.5V9.5" stroke="#4338CA" stroke-width="0.75" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                              <path d="M8 4.5L6 2.5" stroke="#4338CA" stroke-width="0.75" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                              <path d="M4 4.5L6 2.5" stroke="#4338CA" stroke-width="0.75" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                            </svg>
+                          </div> -->
+                        </div>
+                      </div>
+                      <div id="showChart5" class="mt-6 xl:-ml-5">
+                        <canvas id="myChart" width="1325" height="400"></canvas>
+                      </div>
+                      <div id="showChart6" class="mt-6 xl:-ml-5" style="display: none;">
+                        <canvas id="myChart5" width="1325" height="400"></canvas>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id='Bar' class="xl:w-2/3 w-full" style="display: none;">
+              <div class="flex items-center justify-center py-8 px-4">
+                <div class="w-full px-10">
+                  <div class="">
+                    <div class="flex flex-col justify-between h-full">
+                      <div>
+                        <div class="lg:flex w-full justify-between">
+                          <h3 class="text-gray-600 dark:text-gray-400 leading-5 text-base md:text-xl font-bold">Selling
+                            Overview</h3>
+                          <div class="flex items-center justify-between lg:justify-start mt-2 md:mt-4 lg:mt-0">
+                            <!-- <div class="flex items-center">
+                              <button
+                                class="py-2 px-4 bg-gray-100 dark:bg-gray-700 focus:outline-none ease-in duration-150 text-xs text-gray-600 dark:text-gray-400 hover:bg-gray-200">Dollars</button>
+                              <button
+                                class="py-2 px-4 bg-indigo-500 focus:outline-none text-white ease-in duration-150 text-xs hover:bg-indigo-600">Tickets</button>
+                            </div> -->
+                            <div class="lg:ml-14">
+                              <div
+                                class="bg-gray-100 dark:bg-gray-700 ease-in duration-150 hover:bg-gray-200 pb-2 pt-1 px-3 rounded-sm">
+                                <select onchange="changeData1(event.target.value)"
+                                  class="text-xs text-gray-600 dark:text-gray-400 bg-transparent focus:outline-none">
+                                  <option class="leading-1">Year</option>
+                                  <option value="0" class="leading-1">2020</option>
+                                  <option value="1" class="leading-1">2019</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- <div class="flex items-end mt-6">
+                          <div class="flex items-center md:ml-4 ml-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
+                              fill="none">
+                              <path d="M6 2.5V9.5" stroke="#4338CA" stroke-width="0.75" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                              <path d="M8 4.5L6 2.5" stroke="#4338CA" stroke-width="0.75" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                              <path d="M4 4.5L6 2.5" stroke="#4338CA" stroke-width="0.75" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                        </div> -->
+                      </div>
+                      <div class="mt-6">
+                        <canvas id="myChart1" width="1025" height="400"></canvas>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id='Candle' class="xl:w-2/3 w-full" style="display: none;">
+              <div class="flex items-center justify-center py-8 px-4">
+                <div class="w-full" style="overflow: hidden;">
+                  <div class="">
+                    <div class="flex flex-col justify-between h-full">
+                      <div>
+                        <div class="lg:flex px-10 w-full justify-between">
+                          <h3 class="text-gray-600 dark:text-gray-400 leading-5 text-base md:text-xl font-bold">Selling
+                            Overview</h3>
+                          <div class="flex items-center justify-between lg:justify-start mt-2 md:mt-4 lg:mt-0">
+                            <!-- <div class="flex items-center">
+                              <button
+                                class="py-2 px-4 bg-gray-100 dark:bg-gray-700 focus:outline-none ease-in duration-150 text-xs text-gray-600 dark:text-gray-400 hover:bg-gray-200">Dollars</button>
+                              <button
+                                class="py-2 px-4 bg-indigo-500 focus:outline-none text-white ease-in duration-150 text-xs hover:bg-indigo-600">Tickets</button>
+                            </div> -->
+                            <div class="lg:ml-14">
+                              <div
+                                class="bg-gray-100 dark:bg-gray-700 ease-in duration-150 hover:bg-gray-200 pb-2 pt-1 px-3 rounded-sm">
+                                <select onchange="changeData2(event.target.value)"
+                                  class="text-xs text-gray-600 dark:text-gray-400 bg-transparent focus:outline-none">
+                                  <option class="leading-1">Year</option>
+                                  <option value="0" class="leading-1">2020</option>
+                                  <option value="1" class="leading-1">2019</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- <div class="flex items-end mt-6">
+                          <div class="flex items-center md:ml-4 ml-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"
+                              fill="none">
+                              <path d="M6 2.5V9.5" stroke="#4338CA" stroke-width="0.75" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                              <path d="M8 4.5L6 2.5" stroke="#4338CA" stroke-width="0.75" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                              <path d="M4 4.5L6 2.5" stroke="#4338CA" stroke-width="0.75" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                            </svg>
+                          </div>
+                        </div> -->
+                      </div>
+                      <div id="g1" class="mt-6 mb-20 w-full -ml-20" style="display: block;">
+                        <div class="" id="chart_div" style="height: 200px;z-index: 10 !important;"></div>
+                      </div>
+                      <!-- <div id="g2" class="mt-6 mb-20" style="display: none;">
+                        <div class="" id="chart_div1" style="height: 200px;z-index: 10;"></div>
+                      </div> -->
+                      <div id="g2" class="mt-6 mb-20 w-full -ml-20" style="display: none;">
+                        <div class="" id="chart_div1" style="height: 200px;z-index: 10 !important;"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- chart's right side cards -->
+            <div class="xl:w-1/3 relative w-full -mt-16 xl:mt-0">
+              <div class="xl:absolute xl:-mt-6 z-20">
+                <div class="flex mt-16">
+                  <div class="w-1/2" style="background-color: #F9FAFA;">
+                    <div class="pt-8 pl-6 pr-12">
+                      <p class="font-bold text-2xl" style="color: #2D3748;">102,344</p>
+                      <p class="" style="color: #4A5568;font-size: 14px;">Print Jobs</p>
+                    </div>
+                    <p class="flex justify-end text-sm pr-2 pb-2 mt-4" style="color: #80BF54;">+0.5%</p>
+                  </div>
+                  <div class="pl-3 w-1/2">
+                    <div class="" style="background-color: #F9FAFA;">
+                      <div class="pt-8 pl-6 pr-6">
+                        <p class="font-bold text-2xl" style="color: #2D3748;">1.23mm</p>
+                        <p class="" style="color: #4A5568;font-size: 14px;">Pieces Printed</p>
+                      </div>
+                      <p class="flex justify-end text-sm pr-2 pb-2 mt-4" style="color: #80BF54;">+0.5%</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex mt-3">
+                  <div class="w-1/2" style="background-color: #F9FAFA;">
+                    <div class="pt-8 pl-6 pr-4">
+                      <p class="font-bold text-2xl" style="color: #2D3748;">$76k</p>
+                      <p class="" style="color: #4A5568;font-size: 14px;">Program Revenue</p>
+                    </div>
+                    <p class="flex justify-end text-sm pr-2 pb-2 mt-4" style="color: #80BF54;">+0.5%</p>
+                  </div>
+                  <div class="pl-3 w-1/2">
+                    <div class="" style="background-color: #F9FAFA;">
+                      <div class="pt-8 pl-6 pr-6">
+                        <p class="font-bold text-2xl" style="color: #2D3748;">$19K</p>
+                        <p class="" style="color: #4A5568;font-size: 14px;">Program Profit</p>
+                      </div>
+                      <p class="flex justify-end text-sm pr-2 pb-2 mt-4" style="color: #80BF54;">+0.5%</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Table Started -->
+          <div class="mx-auto md:px-14 container bg-white dark:bg-gray-800 rounded xl:pb-48 md:pb-20">
+            <div class="w-full overflow-x-scroll shadow-xl xl:overflow-hidden">
+              <table class="min-w-full bg-white dark:bg-gray-800" id="main-table">
+                <thead class="">
+                  <tr class="w-full  bg-gray-100  dark:bg-gray-700 " style="border-collapse: separate;">
+                    <th class="pl-3 py-5 rounded-xl rounded-r-none rounded-bl-none" style="border-collapse: separate;">
+                      <!-- <div class="border border-gray-300">
+
+                      </div> -->
+                    </th>
+                    <th class="whitespace-no-wrap w-32 first-dropdown cursor-pointer" onclick="dropdownFunction(this)">
+                      <div class="flex items-center justify-between relative chuss-div">
+                        <p
+                          class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                          Date</p>
+                        <div class="cursor-pointer mr-3 text-gray-800 dark:text-gray-100">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down"
+                            width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" />
+                            <polyline points="6 9 12 15 18 9" />
+                          </svg>
+                        </div>
+                      </div>
+                    </th>
+                    <th class="border-l border-gray-300 pl-4 whitespace-no-wrap w-40 first-dropdown cursor-pointer"
+                      onclick="dropdownFunction(this)">
+                      <div class="flex items-center justify-between relative">
+                        <p
+                          class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                          Customer ID Number</p>
+                        <div class="cursor-pointer mr-3 text-gray-800 dark:text-gray-100">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down"
+                            width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" />
+                            <polyline points="6 9 12 15 18 9" />
+                          </svg>
+                        </div>
+                      </div>
+                    </th>
+                    <th class="border-l border-gray-300 pl-4 whitespace-no-wrap w-36 first-dropdown cursor-pointer"
+                      onclick="dropdownFunction(this)">
+                      <div class="flex items-center justify-between relative">
+                        <p
+                          class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                          Print Order Number</p>
+                        <div class="cursor-pointer mr-3 text-gray-800 dark:text-gray-100">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down"
+                            width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" />
+                            <polyline points="6 9 12 15 18 9" />
+                          </svg>
+                        </div>
+                      </div>
+                    </th>
+                    <th class="border-l border-gray-300 pl-4 whitespace-no-wrap w-32 first-dropdown cursor-pointer"
+                      onclick="dropdownFunction(this)">
+                      <div class="flex items-center justify-between relative">
+                        <p
+                          class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                          Invoice Number</p>
+                        <div class="cursor-pointer mr-3 text-gray-800 dark:text-gray-100">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down"
+                            width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" />
+                            <polyline points="6 9 12 15 18 9" />
+                          </svg>
+                        </div>
+                      </div>
+                    </th>
+                    <th class="border-l border-gray-300 pl-4 whitespace-no-wrap w-32 first-dropdown cursor-pointer"
+                      onclick="dropdownFunction(this)">
+                      <div class="flex items-center justify-between relative">
+                        <p
+                          class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                          Print Order Type</p>
+                        <div class="cursor-pointer mr-3 text-gray-800 dark:text-gray-100">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down"
+                            width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" />
+                            <polyline points="6 9 12 15 18 9" />
+                          </svg>
+                        </div>
+                      </div>
+                    </th>
+                    <th class="border-l border-gray-300 pl-4 whitespace-no-wrap w-32 first-dropdown cursor-pointer"
+                      onclick="dropdownFunction(this)">
+                      <div class="flex items-center justify-between relative">
+                        <p
+                          class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                          Print Order Revenue</p>
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                          class="cursor-pointer mr-3 text-gray-800 dark:text-gray-100 icon icon-tabler icon-tabler-chevron-down"
+                          width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                          fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <path stroke="none" d="M0 0h24v24H0z" />
+                          <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                      </div>
+                    </th>
+                    <th class="border-l border-gray-300 pl-4 whitespace-no-wrap w-32 first-dropdown cursor-pointer"
+                      onclick="dropdownFunction(this)">
+                      <div class="flex items-center justify-between relative">
+                        <p
+                          class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                          Restoration Progrom Profit</p>
+                        <div class="cursor-pointer mr-3 text-gray-800 dark:text-gray-100">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down"
+                            width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" />
+                            <polyline points="6 9 12 15 18 9" />
+                          </svg>
+                        </div>
+                      </div>
+                    </th>
+                    <th class="border-l border-gray-300 pl-4 whitespace-no-wrap w-32 first-dropdown cursor-pointer"
+                      onclick="dropdownFunction(this)">
+                      <div class="flex items-center justify-between relative">
+                        <p
+                          class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                          Certification Number</p>
+                        <div class="cursor-pointer mr-3 text-gray-800 dark:text-gray-100">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down"
+                            width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" />
+                            <polyline points="6 9 12 15 18 9" />
+                          </svg>
+                        </div>
+                      </div>
+                    </th>
+                    <th class="w-10 rounded-tr-xl">
+                      <button id="myBtn" class="focus:outline-none">
+                        <div class="rounded-tr-xl w-12 h-12 flex justify-center items-center"
+                          style="background-color: #80BF54;margin-left: 6px;">
+                          <img src="./assets/Edit.svg" />
+                        </div>
+                      </button>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="">
+                    <td class="pl-3 w-24 py-3">
+                      <svg onclick="showR1()" xmlns="http://www.w3.org/2000/svg"
+                        class="icon icon-tabler icon-tabler-chevron-down cursor-pointer" width="16" height="16"
+                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z"></path>
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </td>
+                    <td class="whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        2/12/21</p>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        BAEJTYxV--C</p>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <div class="h-6 w-20 rounded-md flex items-center justify-center">
+                        <span class="text-xs text-blue-500 font-normal">PAEPS9JPZ_0</span>
+                      </div>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        #02893-16425714</p>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        Business Cards</p>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        50</p>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        20$</p>
+                    </td>
+                    <td class="pl-4 pr-4 whitespace-no-wrap w-32">
+                      <div class="relative">
+                        <button id="myBtn2" class="focus:outline-none">
+                          <p class="leading-3 text-xs tracking-normal font-normal" style="color: #00A5D6;">
+                            RRG-#1257jsd1
+                          </p>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="10">
+                      <div id="R1" class="bg-gray-100" style="display: none;">
+                        <div class="flex items-stretch w-full  dark:border-gray-200">
+                          <div class="w-full bg-gray-100 dark:bg-gray-800">
+                            <div class="bg-gray-100  dark:bg-gray-800 w-full  xl:px-8 py-6 -mt-1">
+                              <div class="flex items-start">
+                                <div class="w-2/12 xl:pl-12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Canva Represen<span class="md:hidden">-<br /></span>ative</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    Elena Madrigal</h5>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Restoration Site ID Number</p>
+                                  <button
+                                    class="text-blue-500 dark:text-gray-100 font-normal text-xs focus:outline-none"
+                                    id="myBtn3">
+                                    d57a292a-3046
+                                  </button>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Restoration Site Name</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    Black Summer Restoration</h5>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Region</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    Australia</h5>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Number of Plants Planted</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    1</h5>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Plant Specie</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    Austrodanthonia species</h5>
+                                </div>
+                              </div>
+                              <div class="flex mt-12 items-start">
+                                <div class="w-2/12 xl:pl-12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Annual Carbon Offset Generated</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    .002lbs</h5>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Total Life Carbon Sequestered</p>
+                                  <h5 class="text-blue-500 dark:text-gray-100 font-normal text-xs">
+                                    .2lbs</h5>
+                                </div>
+                                <div class="w-2/12">
+
+                                </div>
+                                <div class="w-2/12">
+
+                                </div>
+                                <div class="w-2/12">
+
+                                </div>
+                                <div class="w-2/12">
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="">
+                    <td class="pl-3 w-24 py-3">
+                      <svg onclick="showR2()" xmlns="http://www.w3.org/2000/svg"
+                        class="icon icon-tabler icon-tabler-chevron-down cursor-pointer" width="16" height="16"
+                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z"></path>
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </td>
+                    <td class="whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        2/12/21</p>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        BAEJTYxV--C</p>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <div class="h-6 w-20 rounded-md flex items-center justify-center">
+                        <span class="text-xs text-blue-500 font-normal">PAEPS9JPZ_0</span>
+                      </div>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        #02893-16425714</p>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        Business Cards</p>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        50</p>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        20$</p>
+                    </td>
+                    <td class="pl-4 pr-4 whitespace-no-wrap w-32">
+                      <div class="relative">
+                        <button id="btn4" class="focus:outline-none">
+                          <p class="leading-3 text-xs tracking-normal font-normal" style="color: #00A5D6;">
+                            RRG-#1257jsd1
+                          </p>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="10">
+                      <div id="R2" class="bg-gray-100" style="display: none;">
+                        <div class="flex items-stretch w-full  dark:border-gray-200">
+                          <div class="w-full bg-gray-100 dark:bg-gray-800">
+                            <div class="bg-gray-100  dark:bg-gray-800 w-full  xl:px-8 py-6 -mt-1">
+                              <div class="flex items-start">
+                                <div class="w-2/12 xl:pl-12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Canva Represen<span class="md:hidden">-<br /></span>ative</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    Elena Madrigal</h5>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Restoration Site ID Number</p>
+                                  <button
+                                    class="text-blue-500 dark:text-gray-100 font-normal text-xs focus:outline-none"
+                                    id="myBtn3">
+                                    d57a292a-3046
+                                  </button>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Restoration Site Name</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    Black Summer Restoration</h5>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Region</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    Australia</h5>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Number of Plants Planted</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    1</h5>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Plant Specie</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    Austrodanthonia species</h5>
+                                </div>
+                              </div>
+                              <div class="flex mt-12 items-start">
+                                <div class="w-2/12 xl:pl-12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Annual Carbon Offset Generated</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    .002lbs</h5>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Total Life Carbon Sequestered</p>
+                                  <h5 class="text-blue-500 dark:text-gray-100 font-normal text-xs">
+                                    .2lbs</h5>
+                                </div>
+                                <div class="w-2/12">
+
+                                </div>
+                                <div class="w-2/12">
+
+                                </div>
+                                <div class="w-2/12">
+
+                                </div>
+                                <div class="w-2/12">
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="">
+                    <td class="pl-3 w-24 py-3">
+                      <svg onclick="showR3()" xmlns="http://www.w3.org/2000/svg"
+                        class="icon icon-tabler icon-tabler-chevron-down cursor-pointer" width="16" height="16"
+                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z"></path>
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </td>
+                    <td class="whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        2/12/21</p>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        BAEJTYxV--C</p>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <div class="h-6 w-20 rounded-md flex items-center justify-center">
+                        <span class="text-xs text-blue-500 font-normal">PAEPS9JPZ_0</span>
+                      </div>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        #02893-16425714</p>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        Business Cards</p>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        50</p>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        20$</p>
+                    </td>
+                    <td class="pl-4 pr-4 whitespace-no-wrap w-32">
+                      <div class="relative">
+                        <button id="btn5" class="focus:outline-none">
+                          <p class="leading-3 text-xs tracking-normal font-normal" style="color: #00A5D6;">
+                            RRG-#1257jsd1
+                          </p>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="10">
+                      <div id="R3" class="bg-gray-100" style="display: none;">
+                        <div class="flex items-stretch w-full  dark:border-gray-200">
+                          <div class="w-full bg-gray-100 dark:bg-gray-800">
+                            <div class="bg-gray-100  dark:bg-gray-800 w-full  xl:px-8 py-6 -mt-1">
+                              <div class="flex items-start">
+                                <div class="w-2/12 xl:pl-12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Canva Represen<span class="md:hidden">-<br /></span>ative</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    Elena Madrigal</h5>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Restoration Site ID Number</p>
+                                  <button
+                                    class="text-blue-500 dark:text-gray-100 font-normal text-xs focus:outline-none"
+                                    id="myBtn3">
+                                    d57a292a-3046
+                                  </button>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Restoration Site Name</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    Black Summer Restoration</h5>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Region</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    Australia</h5>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Number of Plants Planted</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    1</h5>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Plant Specie</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    Austrodanthonia species</h5>
+                                </div>
+                              </div>
+                              <div class="flex mt-12 items-start">
+                                <div class="w-2/12 xl:pl-12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Annual Carbon Offset Generated</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    .002lbs</h5>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Total Life Carbon Sequestered</p>
+                                  <h5 class="text-blue-500 dark:text-gray-100 font-normal text-xs">
+                                    .2lbs</h5>
+                                </div>
+                                <div class="w-2/12">
+
+                                </div>
+                                <div class="w-2/12">
+
+                                </div>
+                                <div class="w-2/12">
+
+                                </div>
+                                <div class="w-2/12">
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="">
+                    <td class="pl-3 w-24 py-3">
+                      <svg onclick="showR4()" xmlns="http://www.w3.org/2000/svg"
+                        class="icon icon-tabler icon-tabler-chevron-down cursor-pointer" width="16" height="16"
+                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z"></path>
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </td>
+                    <td class="whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        2/12/21</p>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        BAEJTYxV--C</p>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <div class="h-6 w-20 rounded-md flex items-center justify-center">
+                        <span class="text-xs text-blue-500 font-normal">PAEPS9JPZ_0</span>
+                      </div>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        #02893-16425714</p>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        Business Cards</p>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        50</p>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        20$</p>
+                    </td>
+                    <td class="pl-4 pr-4 whitespace-no-wrap w-32">
+                      <div class="relative">
+                        <button id="btn6" class="focus:outline-none">
+                          <p class="leading-3 text-xs tracking-normal font-normal" style="color: #00A5D6;">
+                            RRG-#1257jsd1
+                          </p>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="10">
+                      <div id="R4" class="bg-gray-100" style="display: none;">
+                        <div class="flex items-stretch w-full  dark:border-gray-200">
+                          <div class="w-full bg-gray-100 dark:bg-gray-800">
+                            <div class="bg-gray-100  dark:bg-gray-800 w-full  xl:px-8 py-6 -mt-1">
+                              <div class="flex items-start">
+                                <div class="w-2/12 xl:pl-12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Canva Represen<span class="md:hidden">-<br /></span>ative</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    Elena Madrigal</h5>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Restoration Site ID Number</p>
+                                  <button
+                                    class="text-blue-500 dark:text-gray-100 font-normal text-xs focus:outline-none"
+                                    id="myBtn3">
+                                    d57a292a-3046
+                                  </button>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Restoration Site Name</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    Black Summer Restoration</h5>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Region</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    Australia</h5>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Number of Plants Planted</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    1</h5>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Plant Specie</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    Austrodanthonia species</h5>
+                                </div>
+                              </div>
+                              <div class="flex mt-12 items-start">
+                                <div class="w-2/12 xl:pl-12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Annual Carbon Offset Generated</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    .002lbs</h5>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Total Life Carbon Sequestered</p>
+                                  <h5 class="text-blue-500 dark:text-gray-100 font-normal text-xs">
+                                    .2lbs</h5>
+                                </div>
+                                <div class="w-2/12">
+
+                                </div>
+                                <div class="w-2/12">
+
+                                </div>
+                                <div class="w-2/12">
+
+                                </div>
+                                <div class="w-2/12">
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="">
+                    <td class="pl-3 w-24 py-3">
+                      <svg onclick="showR5()" xmlns="http://www.w3.org/2000/svg"
+                        class="icon icon-tabler icon-tabler-chevron-down cursor-pointer" width="16" height="16"
+                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z"></path>
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </td>
+                    <td class="whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        2/12/21</p>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        BAEJTYxV--C</p>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <div class="h-6 w-20 rounded-md flex items-center justify-center">
+                        <span class="text-xs text-blue-500 font-normal">PAEPS9JPZ_0</span>
+                      </div>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        #02893-16425714</p>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        Business Cards</p>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        50</p>
+                    </td>
+                    <td class="pl-4 whitespace-no-wrap w-32">
+                      <p
+                        class="text-gray-800 dark:text-gray-100 font-normal text-left text-xs tracking-normal leading-4">
+                        20$</p>
+                    </td>
+                    <td class="pl-4 pr-4 whitespace-no-wrap w-32">
+                      <div class="relative">
+                        <button id="btn7" class="focus:outline-none">
+                          <p class="leading-3 text-xs tracking-normal font-normal" style="color: #00A5D6;">
+                            RRG-#1257jsd1
+                          </p>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="10">
+                      <div id="R5" class="bg-gray-100" style="display: none;">
+                        <div class="flex items-stretch w-full  dark:border-gray-200">
+                          <div class="w-full bg-gray-100 dark:bg-gray-800">
+                            <div class="bg-gray-100  dark:bg-gray-800 w-full  xl:px-8 py-6 -mt-1">
+                              <div class="flex items-start">
+                                <div class="w-2/12 xl:pl-12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Canva Represen<span class="md:hidden">-<br /></span>ative</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    Elena Madrigal</h5>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Restoration Site ID Number</p>
+                                  <button
+                                    class="text-blue-500 dark:text-gray-100 font-normal text-xs focus:outline-none"
+                                    id="myBtn3">
+                                    d57a292a-3046
+                                  </button>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Restoration Site Name</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    Black Summer Restoration</h5>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Region</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    Australia</h5>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Number of Plants Planted</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    1</h5>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Plant Specie</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    Austrodanthonia species</h5>
+                                </div>
+                              </div>
+                              <div class="flex mt-12 items-start">
+                                <div class="w-2/12 xl:pl-12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Annual Carbon Offset Generated</p>
+                                  <h5 class="text-gray-800 dark:text-gray-100 font-semibold text-xs">
+                                    .002lbs</h5>
+                                </div>
+                                <div class="w-2/12">
+                                  <p class="text-gray-600 dark:text-gray-400 font-normal text-xs">
+                                    Total Life Carbon Sequestered</p>
+                                  <h5 class="text-blue-500 dark:text-gray-100 font-normal text-xs">
+                                    .2lbs</h5>
+                                </div>
+                                <div class="w-2/12">
+
+                                </div>
+                                <div class="w-2/12">
+
+                                </div>
+                                <div class="w-2/12">
+
+                                </div>
+                                <div class="w-2/12">
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- Table Ended -->
+        </div>
+        <div class="bg-white py-4" style="background-color: #F9FAFA;">
+          <p class="text-center p-1" style="color: #1A202C;font-size: 12px;">This dashboard is proprietary to RRG
+            clients and program
+            data
+            generated by the Restoration Print Program</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal For Plus -->
+  <div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content rounded-lg w-10/12 xl:w-1/3 -mt-2">
+      <div class="flex items-center justify-between">
+        <p class="text-left font-bold text-xl">Edit View</p>
+        <span class="close">&times;</span>
+      </div>
+      <div class="flex pt-8">
+        <div class="w-1/2 pr-2">
+          <p class="text-lg font-bold">Visible Columns</p>
+          <div class="h-64 overflow-y-scroll">
+            <p class="pt-4 text-sm">Data</p>
+            <p class="pt-4 text-sm">Customer Name / Number</p>
+            <p class="pt-4 text-sm">Print Order Number</p>
+            <p class="pt-4 text-sm">Units per Print Order</p>
+            <p class="pt-4 text-sm">Print Order Revenue</p>
+            <p class="pt-4 text-sm">Print Order Restoration Unit Cost</p>
+            <p class="pt-4 text-sm">Certification Number</p>
+            <p class="pt-4 text-sm">Data</p>
+            <p class="pt-4 text-sm">Data</p>
+          </div>
+        </div>
+        <div class="w-1/2">
+          <p class="text-lg font-bold">Hidden Columns</p>
+          <div class="h-64 overflow-y-scroll">
+            <p class="pt-4 text-sm">Canva Represenative associated with account</p>
+            <p class="pt-4 text-sm">Number of plants planted</p>
+            <p class="pt-4 text-sm">Type of Plant planted</p>
+            <p class="pt-4 text-sm">Total carbon offset generated from transaction</p>
+            <p class="pt-4 text-sm">Print Order Restoration Unit Cost Markup</p>
+            <p class="pt-4 text-sm">Data</p>
+            <p class="pt-4 text-sm">Data</p>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-end pt-16">
+        <button class="py-2 px-3 text-white rounded-sm"
+          style="background: linear-gradient(120.28deg, #8ECB64 1.68%, #80BF54 50.76%);">Apply Changes</button>
+      </div>
+    </div>
+  </div>
+  <!-- Modal For Restoration -->
+  <div id="myModal3" class="modal3">
+    <!-- Modal content -->
+    <div class="modal3-content rounded-lg w-10/12 xl:w-1/3 -mt-2">
+      <div class="flex items-center justify-between">
+        <p class="text-left font-bold text-xl">Restoration Site ID details</p>
+        <span class="close3">&times;</span>
+      </div>
+      <div class="flex pt-8">
+        <div class="w-1/2 pr-2">
+          <p class="text-sm" style="color: #4A5568;">Restoration Site Name</p>
+          <p class="text-sm font-semibold" style="color: #1A202C;">Black Summer Restoration</p>
+          <div class="mt-6">
+            <p class="text-sm" style="color: #4A5568;">Province</p>
+            <p class="text-sm font-semibold" style="color: #1A202C;">NSW</p>
+          </div>
+          <div class="mt-6">
+            <p class="text-sm" style="color: #4A5568;">Restoration Partner Name</p>
+            <p class="text-sm font-semibold" style="color: #1A202C;">Australian Land Conservancy</p>
+          </div>
+          <div class="mt-6">
+            <p class="text-sm" style="color: #4A5568;">Acreage</p>
+            <p class="text-sm font-semibold" style="color: #1A202C;">182</p>
+          </div>
+          <div class="mt-6">
+            <p class="text-sm" style="color: #4A5568;">Season</p>
+            <p class="text-sm font-semibold" style="color: #1A202C;">Spring-2021</p>
+          </div>
+          <div class="mt-6">
+            <p class="text-sm" style="color: #4A5568;">Projected Planting Dates</p>
+            <p class="text-sm font-semibold" style="color: #1A202C;">February 2021</p>
+          </div>
+          <div class="mt-6">
+            <p class="text-sm" style="color: #4A5568;">Restoration SIte Status?</p>
+            <p class="text-sm font-semibold" style="color: #1A202C;">Site Preperation</p>
+          </div>
+        </div>
+        <div class="w-1/2">
+          <div class="flex">
+            <div class="w-full pr-2">
+              <p class="text-sm" style="color: #4A5568;">Regiom</p>
+              <p class="text-sm font-semibold" style="color: #1A202C;">Australia</p>
+              <div class="mt-6">
+                <p class="text-sm" style="color: #4A5568;">City</p>
+                <p class="text-sm font-semibold" style="color: #1A202C;">Batlow</p>
+              </div>
+              <div class="mt-6">
+                <p class="text-sm" style="color: #4A5568;">Restoration Site Type</p>
+                <p class="text-sm font-semibold" style="color: #1A202C;">Fire Restoration</p>
+              </div>
+              <div class="mt-6">
+                <p class="text-sm" style="color: #4A5568;">Total Plant Quantities</p>
+                <p class="text-sm font-semibold" style="color: #1A202C;">255,000</p>
+              </div>
+              <div class="mt-6">
+                <p class="text-sm" style="color: #4A5568;">Restoration Types</p>
+                <p class="text-sm font-semibold" style="color: #1A202C;">Seed</p>
+              </div>
+              <div class="mt-6">
+                <p class="text-sm" style="color: #4A5568;">Actual Planting Dates</p>
+                <p class="text-sm font-semibold" style="color: #1A202C;">FTBD</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-end pt-16">
+        <button class="py-2 px-3 text-white rounded-sm"
+          style="background: linear-gradient(120.28deg, #8ECB64 1.68%, #80BF54 50.76%);">Close</button>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+
+  let newData = [600, 400, 620, 300, 200, 600, 230, 300, 200, 200, 100, 1200];
+
+  var dataObjects = [
+    {
+      label: "Datasets 1",
+      data: [600, 400, 620, 300, 200, 600, 230, 300, 200, 200, 100, 1200],
+      data1: [400, 100, 222, 400, 250, 620, 380, 200, 600, 400, 800, 1000]
+    },
+    {
+      label: "Datasets 2",
+      data: [200, 300, 820, 380, 250, 620, 380, 500, 100, 400, 300, 1200],
+      data1: [400, 100, 222, 400, 250, 620, 380, 200, 600, 400, 800, 1000]
+    },
+    {
+      label: "Datasets 3",
+      data: [11, 8, 12],
+      data1: [400, 100, 222, 400, 250, 620, 380, 200, 600, 400, 800, 1000]
+    }
+  ]
+
+
+
+  const chart = new Chart(document.getElementById("myChart"), {
+    type: "line",
+    data: {
+      labels: ["January", "February", "March", "April", "May", "June", "July", "Aug", "Sep", "Nov", "Dec"],
+      datasets: [{
+        label: dataObjects[0].label,
+        data: dataObjects[0].data,
+        /* global setting */
+        backgroundColor: 'transparent',
+        borderColor: '#80BF54',
+        borderWidth: 1
+      },
+      {
+        label: dataObjects[0].label,
+        data: dataObjects[0].data1,
+        backgroundColor: 'transparent',
+        borderColor: '#4DC0E2',
+        /* global setting */
+        // backgroundColor: [
+        //   'green',
+        //   'rgba(54, 162, 235, 0.2)',
+        //   'rgba(255, 206, 86, 0.2)'
+        // ],
+        // borderColor: [
+        //   'rgba(255, 99, 132, 1)',
+        //   'rgba(54, 162, 235, 1)',
+        //   'rgba(255, 206, 86, 1)'
+        // ],
+        borderWidth: 1
+      }],
+    },
+    options: {
+      legend: {
+        position: false,
+      },
+      elements: {
+        point: {
+          radius: 0,
+          hoverRadius: 3,
+        },
+
+      },
+      scales: {
+        yAxes: [
+          {
+            gridLines: {
+              display: false,
+            },
+            display: false,
+          },
+        ],
+      },
+    },
+  });
+
+  const chart5 = new Chart(document.getElementById("myChart5"), {
+    type: "line",
+    data: {
+      labels: ["January", "February", "March", "April", "May", "June", "July", "Aug", "Sep", "Nov", "Dec"],
+      datasets: [{
+        label: dataObjects[1].label,
+        data: dataObjects[1].data,
+        /* global setting */
+        backgroundColor: 'transparent',
+        borderColor: '#80BF54',
+        borderWidth: 1
+      },
+      {
+        label: dataObjects[1].label,
+        data: dataObjects[1].data1,
+        backgroundColor: 'transparent',
+        borderColor: '#4DC0E2',
+        /* global setting */
+        // backgroundColor: [
+        //   'green',
+        //   'rgba(54, 162, 235, 0.2)',
+        //   'rgba(255, 206, 86, 0.2)'
+        // ],
+        // borderColor: [
+        //   'rgba(255, 99, 132, 1)',
+        //   'rgba(54, 162, 235, 1)',
+        //   'rgba(255, 206, 86, 1)'
+        // ],
+        borderWidth: 1
+      }],
+    },
+    options: {
+      legend: {
+        position: false,
+      },
+      elements: {
+        point: {
+          radius: 0,
+          hoverRadius: 3,
+        },
+
+      },
+      scales: {
+        yAxes: [
+          {
+            gridLines: {
+              display: false,
+            },
+            display: false,
+          },
+        ],
+      },
+    },
+  });
+
+  function changeData(value) {
+    var x = document.getElementById('showChart5');
+    var y = document.getElementById('showChart6');
+    if (x.style.display === "none") {
+      x.style.display = "block";
+      y.style.display = "none";
+    } else {
+      x.style.display = "none";
+      y.style.display = "block";
+    }
+  }
+
+  function changeData1(index) {
+    chart1.data.datasets.forEach(function (dataset) {
+      dataset.label = dataObjects[index].label;
+      dataset.data = dataObjects[index].data;
+      dataset.data1 = dataObjects[index].data1;
+      //dataset.backgroundColor = dataObjects[index].backgroundColor;
+    });
+    chart1.update();
+  }
+
+  const chart1 = new Chart(document.getElementById("myChart1"), {
+    type: "bar",
+    data: {
+      labels: ["January", "February", "March", "April", "May", "June", "July", "Aug", "Sep", "Nov", "Dec"],
+      datasets: [
+        {
+          label: dataObjects[0].label,
+          data: dataObjects[0].data,
+          backgroundColor: "#4DC0E2",
+          data: newData,
+          fill: false,
+          pointBackgroundColor: "#4DC0E2",
+          borderWidth: "3",
+          pointBorderWidth: "4",
+          pointHoverRadius: "6",
+          pointHoverBorderWidth: "8",
+          pointHoverBorderColor: "rgb(74,85,104,0.2)",
+        },
+        {
+          label: dataObjects[0].label,
+          data: dataObjects[0].data1,
+          backgroundColor: "#80BF54",
+          data: newData,
+          fill: false,
+          pointBackgroundColor: "#80BF54",
+          borderWidth: "3",
+          pointBorderWidth: "4",
+          pointHoverRadius: "6",
+          pointHoverBorderWidth: "8",
+          pointHoverBorderColor: "rgb(74,85,104,0.2)",
+        },
+      ],
+    },
+    options: {
+      legend: {
+        position: false,
+      },
+      elements: {
+        point: {
+          radius: 0,
+          hoverRadius: 3,
+        },
+
+      },
+      scales: {
+        yAxes: [
+          {
+            gridLines: {
+              display: false,
+            },
+            display: false,
+          },
+        ],
+      },
+    },
+  });
+
+
+
+
+  //Script for tables
+  let elements = document.querySelectorAll("[data-menu]");
+  for (let i = 0; i < elements.length; i++) {
+    let main = elements[i];
+    main.addEventListener("click", function () {
+      let element = main.parentElement.parentElement;
+      let andicators = main.querySelectorAll("svg");
+      let child = element.querySelector("ul");
+      if (child.classList.contains("opacity-0")) {
+        child.classList.remove("invisible");
+        child.classList.add("visible");
+        child.classList.add("opacity-100");
+        child.classList.remove("opacity-0");
+        andicators[0].style.display = "block";
+        andicators[1].style.display = "none";
+      } else {
+        child.classList.add("invisible");
+        child.classList.remove("visible");
+        child.classList.remove("opacity-100");
+        child.classList.add("opacity-0");
+        andicators[0].style.display = "none";
+        andicators[1].style.display = "block";
+      }
+    });
+  }
+  var tableDetails = document.getElementsByClassName("detail-row");
+  for (var i = 0; i < tableDetails.length; i++) {
+    tableDetails[i].getElementsByTagName("td")[0].classList.add("hidden");
+  }
+  function dropdownFunction(element) {
+    var single = element.getElementsByClassName("dropdown-content")[0];
+    single.classList.toggle("hidden");
+  }
+  function accordionHandler(element) {
+    var single = element.parentElement.parentElement.parentElement.nextElementSibling.children[0];
+    single.classList.toggle("hidden");
+  }
+  function tableInteract(element) {
+    var single = element.parentElement.parentElement.parentElement;
+    single.classList.toggle("dark:bg-gray-700");
+    single.classList.toggle("bg-gray-100");
+  }
+  function checkAll(element) {
+    let rows = element.parentElement.parentElement.parentElement.parentElement.nextElementSibling.children;
+    for (var i = 0; i < rows.length; i++) {
+      if (element.checked) {
+        rows[i].classList.add("bg-gray-100");
+        rows[i].classList.add("dark:bg-gray-700");
+        let checkbox = rows[i].getElementsByTagName("input")[0];
+        if (checkbox) {
+          checkbox.checked = true;
+        }
+      } else {
+        rows[i].classList.remove("bg-gray-100");
+        rows[i].classList.remove("dark:bg-gray-700");
+        let checkbox = rows[i].getElementsByTagName("input")[0];
+        if (checkbox) {
+          checkbox.checked = false;
+        }
+      }
+    }
+  }
+
+  // Modal for plus
+
+  // Get the modal
+  var modal = document.getElementById("myModal");
+
+  // Get the button that opens the modal
+  var btn = document.getElementById("myBtn");
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // When the user clicks the button, open the modal 
+  btn.onclick = function () {
+    modal.style.display = "block";
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function () {
+    modal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  // window.onclick = function (event) {
+  //   if (event.target == modal) {
+  //     modal.style.display = "none";
+  //   }
+  // }
+
+  //Modal for License
+
+  //Get the modal
+  var modal2 = document.getElementById("myModal2");
+
+  // Get the button that opens the modal
+  var btn2 = document.getElementById("myBtn2");
+
+  // Get the <span> element that closes the modal
+  var span2 = document.getElementsByClassName("close2")[0];
+
+  // When the user clicks the button, open the modal 
+  btn2.onclick = function () {
+    modal2.style.display = "block";
+  }
+
+  btn4.onclick = function () {
+    modal2.style.display = "block";
+  }
+  btn5.onclick = function () {
+    modal2.style.display = "block";
+  }
+  btn6.onclick = function () {
+    modal2.style.display = "block";
+  }
+  btn7.onclick = function () {
+    modal2.style.display = "block";
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  span2.onclick = function () {
+    modal2.style.display = "none";
+  }
+
+  //Modal for Restoration
+
+  // Get the modal
+  var modal3 = document.getElementById("myModal3");
+
+  // Get the button that opens the modal
+  var btn3 = document.getElementById("myBtn3");
+
+  // Get the <span> element that closes the modal
+  var span3 = document.getElementsByClassName("close3")[0];
+
+  // When the user clicks the button, open the modal 
+  btn3.onclick = function () {
+    modal3.style.display = "block";
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  span3.onclick = function () {
+    modal3.style.display = "none";
+  }
+
+
+  function showR1() {
+    var x = document.getElementById("R1");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+
+  function showR2() {
+    var x = document.getElementById("R2");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+
+  function showR3() {
+    var x = document.getElementById("R3");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+
+  function showR4() {
+    var x = document.getElementById("R4");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+
+  function showR5() {
+    var x = document.getElementById("R5");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+
+  function showChart1() {
+    document.getElementById("Line").style.display = "none";
+    document.getElementById("Candle").style.display = "none";
+    document.getElementById("choose1").style.backgroundColor = "#80BF54";
+    document.getElementById("choose1").style.color = "white";
+    document.getElementById("choose2").style.backgroundColor = "#F9FAFA";
+    document.getElementById("choose2").style.color = "#6B7280";
+    document.getElementById("choose3").style.backgroundColor = "#f9f9f9";
+    document.getElementById("choose3").style.color = "#6B7280";
+    var y = document.getElementById("Bar");
+    if (y.style.display === "none") {
+      y.style.display = "block";
+    }
+  }
+
+  function showChart2() {
+    document.getElementById("Bar").style.display = "none";
+    document.getElementById("Candle").style.display = "none";
+    document.getElementById("choose2").style.backgroundColor = "#80BF54";
+    document.getElementById("choose2").style.color = "white";
+    document.getElementById("choose1").style.backgroundColor = "#f9f9f9";
+    document.getElementById("choose1").style.color = "#6B7280";
+    document.getElementById("choose3").style.backgroundColor = "#f9f9f9";
+    document.getElementById("choose3").style.color = "#6B7280";
+    var y = document.getElementById("Line");
+    if (y.style.display === "none") {
+      y.style.display = "block";
+    }
+  }
+
+  function showChart3() {
+    document.getElementById("Bar").style.display = "none";
+    document.getElementById("Line").style.display = "none";
+    document.getElementById("choose3").style.backgroundColor = "#80BF54";
+    document.getElementById("choose3").style.color = "white";
+    document.getElementById("choose2").style.backgroundColor = "#f9f9f9";
+    document.getElementById("choose2").style.color = "#6B7280";
+    document.getElementById("choose1").style.backgroundColor = "#f9f9f9";
+    document.getElementById("choose1").style.color = "#6B7280";
+    var y = document.getElementById("Candle");
+    if (y.style.display === "none") {
+      y.style.display = "block";
+    }
+  }
+
+  function menuShow() {
+    var x = document.getElementById("menu-sm");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+
+  function showDropdown() {
+    var x = document.getElementById("dropdownProfit");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+
+  function showDropdownValues(v1, v2) {
+    document.getElementById("reven").innerHTML = v1;
+    document.getElementById("prof").innerHTML = v2;
+    showDropdown()
+  }
+
+</script>
+
+</html>
